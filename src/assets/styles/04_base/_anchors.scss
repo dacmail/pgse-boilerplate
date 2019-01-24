@@ -1,0 +1,10 @@
+a {
+  color: $anchor__color;
+  text-decoration: none;
+  transition: all .2s ease-out;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}

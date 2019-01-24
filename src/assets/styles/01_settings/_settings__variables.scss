@@ -1,0 +1,46 @@
+$paragraphs__margin-bottom: 1.5rem !default;
+$-o-section-padding: 40px !default;
+$-o-section-padding-lg: 60px !default;
+
+// Managing z-index with function: https://gist.github.com/teyepe/ed84919941a27f16a75a521c6f8594f4
+$z-index: (
+  'under': -5,
+  'zero': 0,
+  'default': 5,
+  'over': 10
+);
+
+$z-level: (
+  'card': 10,
+  'footer': 20,
+  'header': 30,
+  'tooltip': 100,
+  'dropdown': 200,
+  'modal': 500
+);
+
+$z-combo: map-merge($z-index, $z-level);
+
+$o-container__gutter:               40px !default;
+$o-container__gutter-single:        $o-container__gutter/2 !default;
+$container-max:                     1224px + $o-container__gutter !default;
+
+$grid-gap:                          24px !default;
+$grid-gap-single:                   $grid-gap/2 !default;
+
+$spacer-unit: 8px !default;
+
+$grid-fractions: (
+  '1': 1/12,
+  '2': 2/12,
+  '3': 3/12,
+  '4': 4/12,
+  '5': 5/12,
+  '6': 6/12,
+  '7': 7/12,
+  '8': 8/12,
+  '9': 9/12,
+  '10': 10/12,
+  '11': 11/12,
+  '12': 12/12
+) !default;

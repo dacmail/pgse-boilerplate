@@ -1,0 +1,22 @@
+.o-section {
+  padding-top: rem($-o-section-padding);
+  padding-bottom: rem($-o-section-padding);
+  flex-grow: 1;
+
+  @media (min-width: $md) {
+    padding-top: rem($-o-section-padding-lg);
+    padding-bottom: rem($-o-section-padding-lg);
+  }
+
+  &--center {
+    text-align: center;
+  }
+
+  &--top0 {
+    padding-top: 0;
+  }
+
+  &--bottom0 {
+    padding-bottom: 0;
+  }
+}

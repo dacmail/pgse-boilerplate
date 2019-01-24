@@ -1,0 +1,34 @@
+/* GRID */
+@mixin offsets($fractions) {
+  @each $key, $value in $fractions {
+    $modifier: str-replace($key, '/', '\\/');
+    $offset-value: (($value * 100) * 1%);
+
+    .u-#{$modifier} {
+      flex-basis: $offset-value;
+      max-width: $offset-value;
+    }
+
+    .u-offset-#{$modifier} {
+      margin-left: $offset-value;
+    }
+  }
+
+  @each $bp-key, $bp-value in $breakpoints {
+    @media (min-width: $bp-value) {
+      @each $key, $value in $fractions {
+        $modifier: str-replace($key, '/', '\\/');
+        $offset-value: (($value * 100) * 1%);
+
+        .u-#{$modifier}#{$breakpoint-class}#{$bp-key} {
+          flex-basis: $offset-value;
+          max-width: $offset-value;
+        }
+
+        .u-offset-#{$modifier}#{$breakpoint-class}#{$bp-key} {
+          margin-left: $offset-value;
+        }
+      }
+    }
+  }
+}

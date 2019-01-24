@@ -1,0 +1,53 @@
+@mixin hidden() {
+
+  .u-hide {
+    display: none !important;
+  }
+
+  @each $bp-key, $bp-value in $breakpoints {
+    @media (min-width: $bp-value) {
+
+      .u-hide#{$breakpoint-class}#{$bp-key} {
+        display: none !important;
+      }
+    }
+  }
+
+  @each $bp-key, $bp-value in $breakpoints-max {
+    @media (max-width: $bp-value) {
+
+      .u-hide#{$breakpoint-class}#{$bp-key} {
+        display: none !important;
+      }
+    }
+  }
+}
+
+@mixin screen-readers() {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@mixin imgRetina($path, $ext: "png", $w: auto, $h: auto, $pos: left top, $repeat: no-repeat) {
+
+  $at1x_path: "#{$path}.#{$ext}";
+  $at2x_path: "#{$path}@2x.#{$ext}";
+
+  background-image: url("#{$at1x_path}");
+  background-size: $w $h;
+  background-position: $pos;
+  background-repeat: $repeat;
+
+  @media all and (-webkit-min-device-pixel-ratio: 1.5),
+    all and (-o-min-device-pixel-ratio: 3/2),
+    all and (min--moz-device-pixel-ratio: 1.5),
+    all and (min-device-pixel-ratio: 1.5) {
+    background-image: url("#{$at2x_path}");
+  }
+}

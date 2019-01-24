@@ -1,0 +1,37 @@
+/* GRID */
+@function str-replace($string, $search, $replace) {
+  $index: str-index($string, $search);
+
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+
+  @return $string;
+}
+
+/* TYPOGRAPHY */
+/*Convert pixels to rem */
+@function rem($size) {
+  $remSize: $size / 16px;
+  @return #{$remSize}rem;
+}
+
+/* HELPERS */
+/* z-index */
+@function z($index: null, $level: null) {
+  @if $index and map-has-key($z-combo, $level) {
+    @return map-get($z-combo, $index) + map-get($z-combo, $level);
+  }
+  @else if $index == auto and $level == null {
+    @return auto;
+  }
+  @else if $index == null and $level == null {
+    @return auto;
+  }
+  @else if $index == null and $level {
+    @return map-get($z-combo, $level);
+  }
+  @else if $index == $level and $level == null map-has-key($z-combo, $index) {
+    @return map-get($z-combo, $index);
+  }
+}

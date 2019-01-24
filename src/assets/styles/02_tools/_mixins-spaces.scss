@@ -1,0 +1,15 @@
+@mixin spaces() {
+  @each $side in (left, top, bottom, right) {
+
+    .u-space-#{$side} {
+      margin-#{$side}: rem($spacer-unit);
+    }
+
+    @each $space in (2, 4, 6, 8, 10, 12, 14, 16) {
+
+      .u-space-#{$side}-#{$space} {
+        margin-#{$side}: rem($spacer-unit * $space);
+      }
+    }
+  }
+}

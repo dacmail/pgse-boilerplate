@@ -1,0 +1,48 @@
+table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  margin: 0 0 rem(30px);
+
+  @media (min-width: $sm) {
+    margin-bottom: rem(40px);
+  }
+}
+
+thead,
+tbody,
+tr,
+th,
+td {
+  border: 0;
+  padding: 0;
+  white-space: normal;
+}
+
+th,
+td {
+  border-bottom: 1px solid $primary;
+  padding: rem(5px) rem(8px);
+  height: rem(56px);
+  text-align: inherit;
+
+  @media (min-width: $md) {
+    padding: rem(10px) rem(24px);
+  }
+}
+
+thead {
+  td,
+  th {
+    border-bottom-color: $primary;
+    color: $primary;
+  }
+}
+
+tbody {
+  th {
+    font-weight: normal;
+    text-align: left;
+  }
+}

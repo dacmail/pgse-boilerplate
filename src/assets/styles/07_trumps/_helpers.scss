@@ -1,0 +1,47 @@
+.u-relative {
+  position: relative;
+}
+
+.u-block {
+  display: block;
+}
+
+.u-top {
+  top: 0 !important;
+}
+
+.u-left {
+  text-align: left;
+}
+
+.u-center {
+  text-align: center;
+
+  &\@sm {
+    @media (min-width: $sm) {
+      text-align: center;
+    }
+  }
+}
+
+.u-right {
+  text-align: right;
+}
+
+.u-block {
+  display: block;
+}
+
+.u-ellipsis {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.u-break {
+  display: block;
+  clear: both;
+}
+
+@include spaces();

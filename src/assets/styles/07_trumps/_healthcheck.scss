@@ -1,0 +1,69 @@
+@if (config(healthcheck) == true) {
+/*------------------------------------*\
+  #HEALTHCHECK
+\*------------------------------------*/
+
+  /**
+   * Highlight types of class to visually see the makeup of our UIs.
+   */
+
+  /**
+   * Outline all classes.
+   */
+  [class] {
+    outline: 5px solid lightgrey;
+  }
+
+  /**
+   * Outline all BEM Elements.
+   */
+  [class*=" __"] {
+    outline: 5px solid grey;
+  }
+
+  /**
+   * Outline all BEM Modifiers.
+   */
+  [class*=" --"] {
+    outline: 5px solid darkgrey;
+  }
+
+  /**
+   * Outline all Object classes.
+   */
+  [class^="o-"],
+  [class*=" o-"] {
+    outline: 10px solid orange;
+  }
+
+  /**
+   * Outline all Component classes.
+   */
+  [class^="c-"],
+  [class*=" c-"] {
+    outline: 10px solid cyan;
+  }
+
+  /**
+   * Outline all Utility/Trumps classes.
+   */
+  [class^="u-"],
+  [class*=" u-"] {
+    outline: 10px solid violet;
+  }
+
+  /**
+   * Outline all Responsive classes.
+   */
+  [class*=" @"] {
+    outline: 5px solid rosybrown;
+  }
+
+  /**
+   * Outline all Hack classes.
+   */
+  [class^="_"] {
+    outline: 10px solid red;
+  }
+
+} // endif

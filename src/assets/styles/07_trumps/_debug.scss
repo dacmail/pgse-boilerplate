@@ -1,0 +1,171 @@
+// Define styles for errors and warns that we can reuse throughout this file.
+
+@mixin debug-warn() {
+  outline: 5px solid yellow;
+}
+
+@mixin debug-error() {
+  outline: 5px solid red;
+}
+
+@if (config(debug) == true) {
+/*------------------------------------*\
+  #DEBUG
+\*------------------------------------*/
+
+/* Empty Elements */
+div:empty,
+span:empty,
+li:empty,
+p:empty,
+td:empty,
+th:empty {
+  @include debug-error();
+}
+
+/* Inline Styles */
+*[style] {
+  @include debug-error();
+}
+
+/* Deprecated Elements */
+applet,
+basefont,
+center,
+dir,
+font,
+isindex,
+menu,
+s,
+strike,
+u {
+  @include debug-error();
+}
+
+/* Deprecated Attributes */
+*[background],
+*[bgcolor],
+*[clear],
+*[color],
+*[compact],
+*[noshade],
+*[nowrap],
+*[size],
+*[start],
+*[bottommargin],
+*[leftmargin],
+*[rightmargin],
+*[topmargin],
+*[marginheight],
+*[marginwidth],
+*[alink],
+*[link],
+*[text],
+*[vlink],
+*[align],
+*[valign],
+*[hspace],
+*[vspace],
+*[height],
+*[width],
+ul[type],
+ol[type],
+li[type] {
+  @include debug-error();
+}
+
+/* Empty Attributes */
+*[alt=""],
+*[title=""],
+*[class=""],
+*[id=""] {
+  @include debug-error();
+}
+
+/**
+ * Images missing `alt` or `title` attributes is an error.
+ */
+img:not([alt])
+img[alt=""],
+img:not([alt]),
+img[title=""],
+img:not([title]) {
+  @include debug-error();
+}
+
+/**
+ * Links missing `title` or link attributes is an error.
+ */
+a:not([title]),
+a[title=""],
+a[href=""] {
+  @include debug-error();
+}
+
+/**
+ * Using a layout item outside of a layout context is a definite error.
+ */
+.o-grid__col {
+  @include debug-error();
+
+  .o-grid & {
+    outline: none;
+  }
+
+}
+
+/**
+ * Having something other than a layout item directly inside a layout context
+ * is an error.
+ */
+.o-grid > :not(.o-grid__col) {
+  @include debug-error();
+}
+
+/**
+ * Warn about links pointing to just `#`; it’s usually better to point them to
+ * `#0` if we have to point to `#` at all.
+ */
+[href="#"] {
+  @include debug-warn();
+}
+
+/**
+ * Elements other than `LI` directly inside lists are not allowed.
+ */
+ul,
+ol {
+
+  > :not(li) {
+    @include debug-error();
+  }
+}
+
+/**
+ * `LI`s outside of lists aren’t allowed either.
+ */
+li {
+  @include debug-error();
+}
+
+ul, ol {
+
+  > li {
+    outline: none;
+  }
+
+}
+
+/**
+ * `table` element.
+ */
+table:not([summary]),
+table[summary=""] {
+  @include debug-error();
+}
+th:not([scope]){
+  @include debug-error();
+}
+
+
+} // endif
