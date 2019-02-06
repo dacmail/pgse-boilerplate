@@ -104,6 +104,7 @@ function scripts() {
     .pipe(rename({
       suffix: ".min"
     }))
+    .pipe(gulpif(argv.production, uglify().on("error", log)))
     .pipe(gulpif(global.isWatching, cached('main')))
     .pipe(gulpif(!argv.production, sourcemaps.write('.')))
     .pipe(gulp.dest('dist/assets/scripts'));
